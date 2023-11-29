@@ -17,34 +17,14 @@ if(process.env.NODE_ENV === 'development'){
 }
 
 // Handlebars
-app.engine(
-    '.hbs',
-     exphbs({ defaultLayout: 'main', extname: '.hbs'}));
+app.engine('.hbs',exphbs({ defaultLayout: 'main', extname: '.hbs'}));
      app.set('view engine', '.hbs')
      
-    //  app.engine(
-    //      '.hbs',
-    //      exphbs({
-    //          /*    helpers: {
-    //              formatDate,
-    //              stripTags,
-    //              truncate,
-    //              editIcon,
-    //              select,
-    //             }, */
-    //             defaultLayout: 'main',
-    //             extname: '.hbs',
-    //         })
-    //         )
+// Routes
+app.use('/', require('./routes/index') )
 
-    //         app.set('view engine', '.hbs') 
+const PORT  = process.env.PORT || 3000
 
-
-            // Routes
-            app.use('/', require('./routes/index') )
-            
-            const PORT  = process.env.PORT || 3000
-            
 app.listen(
     PORT,
      console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)
